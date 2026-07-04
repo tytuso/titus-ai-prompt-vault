@@ -13,7 +13,7 @@ export default function SearchBar({
 }: SearchBarProps) {
   return (
     <div className="sticky top-16 lg:top-0 z-20 bg-[#FAFAFA] pb-5">
-      <div className="relative max-w-3xl">
+      <div className="relative w-full lg:max-w-3xl">
         <Search
           size={20}
           className="absolute left-5 top-1/2 -translate-y-1/2 -translate-x-0 text-slate-400"

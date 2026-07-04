@@ -9,10 +9,10 @@ export default async function VaultPage() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      <div className="flex">
-        <Sidebar />
+      <div className="block lg:flex">
+  <Sidebar />
 
-        <section className="min-w-0 flex-1 px-3 py-5 sm:px-5 md:px-8 lg:px-10 lg:py-8">
+  <section className="w-full min-w-0 flex-1 px-4 py-5 lg:px-10 lg:py-8">
           <VaultContent prompts={prompts} />
         </section>
       </div>
