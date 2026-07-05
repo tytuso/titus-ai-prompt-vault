@@ -22,10 +22,7 @@ export default function Navbar({
           TITUS<span className="text-emerald-500"> AI</span>
         </h1>
 
-        <div className="hidden items-center gap-8 text-[14px] text-gray-500 lg:flex">
-          <a href="#">YouTube</a>
-          <a href="#">Community</a>
-        </div>
+        <div className="hidden lg:block"></div>
 
       </div>
     </header>

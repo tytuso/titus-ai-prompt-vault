@@ -5,16 +5,16 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const items = [
-  "All Prompts",
-  "ChatGPT",
-  "Gemini",
-  "Claude",
-  "Business",
-  "Marketing",
-  "Students",
-  "Programming",
-  "Writing",
-  "Productivity",
+  { label: "All Prompts", value: "all" },
+  { label: "ChatGPT", value: "ChatGPT" },
+  { label: "Gemini", value: "Gemini" },
+  { label: "Claude", value: "Claude" },
+  { label: "Business", value: "Business" },
+  { label: "Marketing", value: "Marketing" },
+  { label: "Students", value: "Students" },
+  { label: "Programming", value: "Programming" },
+  { label: "Writing", value: "Writing" },
+  { label: "Productivity", value: "Productivity" },
 ];
 
 export default function Sidebar() {
@@ -22,7 +22,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* ================= MOBILE HEADER ================= */}
+      {/* MOBILE HEADER */}
 
       <header className="sticky top-0 z-40 flex h-16 items-center border-b border-slate-200 bg-white px-4 lg:hidden">
         <button
@@ -40,7 +40,7 @@ export default function Sidebar() {
         </Link>
       </header>
 
-      {/* ================= MOBILE DRAWER ================= */}
+      {/* MOBILE DRAWER */}
 
       <div
         className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ${
@@ -75,10 +75,9 @@ export default function Sidebar() {
             </button>
           </div>
 
-          {/* Contribute */}
+          {/* Buttons */}
 
           <div className="mb-8 space-y-3">
-
             <a
               href="https://forms.gle/oLaL7wwRNhWoD5rg9"
               target="_blank"
@@ -96,25 +95,26 @@ export default function Sidebar() {
             >
               💡 Submit Prompt
             </a>
-
           </div>
+
+          {/* Categories */}
 
           <nav className="space-y-1">
             {items.map((item) => (
               <Link
-                key={item}
-                href="/vault"
+                key={item.value}
+                href={`/vault?category=${item.value}`}
                 onClick={() => setOpen(false)}
                 className="block rounded-lg px-3 py-3 text-[16px] font-medium text-slate-700 transition hover:bg-slate-100 hover:text-emerald-600"
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </nav>
         </aside>
       </div>
 
-      {/* ================= DESKTOP SIDEBAR ================= */}
+      {/* DESKTOP */}
 
       <aside className="hidden w-64 shrink-0 bg-[#FAFAFA] lg:block">
         <div className="sticky top-0 h-screen overflow-y-auto px-8 py-10">
@@ -129,10 +129,7 @@ export default function Sidebar() {
             AI Prompt Vault
           </p>
 
-          {/* Contribute */}
-
           <div className="mt-6 space-y-3">
-
             <a
               href="https://forms.gle/oLaL7wwRNhWoD5rg9"
               target="_blank"
@@ -150,17 +147,16 @@ export default function Sidebar() {
             >
               💡 Submit Prompt
             </a>
-
           </div>
 
           <nav className="mt-10 space-y-2">
             {items.map((item) => (
               <Link
-                key={item}
-                href="/vault"
+                key={item.value}
+                href={`/vault?category=${item.value}`}
                 className="block rounded-lg px-3 py-3 text-[16px] font-medium text-slate-700 transition hover:bg-slate-100 hover:text-emerald-600"
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </nav>

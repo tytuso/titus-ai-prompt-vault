@@ -6,22 +6,31 @@ import PromptCard from "./PromptCard";
 
 export default function VaultContent({
   prompts,
+  selectedCategory,
 }: {
   prompts: any[];
+  selectedCategory: string;
 }) {
   const [search, setSearch] = useState("");
 
   const filtered = useMemo(() => {
     return prompts.filter((prompt) => {
       const text = `${prompt.title.rendered}
-      ${prompt.acf.category}
-      ${prompt.content.rendered}`
+${prompt.acf.category}
+${prompt.content.rendered}`
         .replace(/<[^>]+>/g, "")
         .toLowerCase();
 
-      return text.includes(search.toLowerCase());
+      const matchesSearch = text.includes(search.toLowerCase());
+
+      const matchesCategory =
+        selectedCategory === "all" ||
+        prompt.acf.category.toLowerCase() ===
+          selectedCategory.toLowerCase();
+
+      return matchesSearch && matchesCategory;
     });
-  }, [search, prompts]);
+  }, [search, prompts, selectedCategory]);
 
   const trending = filtered.filter((p) => p.acf.trending);
 
@@ -50,7 +59,7 @@ export default function VaultContent({
             </h2>
 
             <p className="mt-2 text-slate-500">
-              The most copied AI prompts this week.
+              The most viewed AI prompts this week.
             </p>
           </div>
 
