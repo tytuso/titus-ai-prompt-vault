@@ -2,6 +2,7 @@ import Sidebar from "@/components/Sidebar";
 import VaultContent from "@/components/VaultContent";
 import { getPrompts } from "@/lib/wordpress";
 import ScrollToTop from "@/components/ScrollToTop";
+import InstallAppButton from "@/components/InstallAppButton";
 
 export const revalidate = 60;
 
@@ -32,6 +33,7 @@ export default async function VaultPage({
         </section>
 
       </div>
+      <InstallAppButton />
       <ScrollToTop />
     </main>
   );
